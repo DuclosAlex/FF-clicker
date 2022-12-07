@@ -34,6 +34,9 @@ PersonnageBase.init({
     }, 
     game_logo_img : {
         type : DataTypes.TEXT
+    },
+    quotes : {
+        type : DataTypes.TEXT
     }
 }, {
     sequelize, 

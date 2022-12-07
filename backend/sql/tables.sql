@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS "personnage_base" (
     "growth_rate" DECIMAL(10,5) NOT NULL,
     "images" TEXT NOT NULL,
     "game_logo_img" TEXT,
+    "quotes" TEXT,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP, -- on peut également utiliser NOW()
     "updated_at" TIMESTAMPTZ
 );
@@ -82,12 +83,12 @@ CREATE TABLE IF NOT EXISTS "monster" (
 INSERT INTO "users" ("username", "email", "password") VALUES 
     ('alex', 'alex@something.truc', 'testPassword');
 
-INSERT INTO "personnage_base" ("name", "lvl", "power_click", "cost", "auto_click_cost", "growth_rate", "images", "game_logo_img" ) VALUES
-    ('Cloud Strife', 0, 1, 25, 5000, 2.17, '/assets/images/cloud.jpeg', '/assets/images/ff7Logo.jpeg' ),
-    (E'Y\'shtola', 0, 5, 2500, 40000, 1.97, '/assets/images/Yshtola.jpeg', '/assets/images/ff14Logo.jpeg'),
-    ('Balthier', 0, 12, 9000, 100000, 2.07, '/assets/images/balthier.jpeg', '/assets/images/ff12Logo.jpeg'),
-    ('Edge', 0, 24, 17800, 400500, 1.48, '/assets/images/edge.jpeg', '/assets/images/ff4Logo.jpeg'),
-    ('Ramza', 0, 41, 30000, 985000, 2.55, '/assets/images/ramza.jpeg', '/assets/images/ffTacticsLogo.jpeg');
+INSERT INTO "personnage_base" ("name", "lvl", "power_click", "cost", "auto_click_cost", "growth_rate", "images", "game_logo_img", "quotes" ) VALUES
+    ('Cloud Strife', 0, 1, 25, 5000, 2.17, '/assets/images/cloud.jpeg', '/assets/images/ff7Logo.jpeg', 'Désolé, je ne suis pas intéressé' ),
+    (E'Y\'shtola', 0, 5, 2500, 40000, 1.97, '/assets/images/Yshtola.jpeg', '/assets/images/ff14Logo.jpeg', E'Je vais vous montrez pourquoi j\'ai choisi le nom de Matoya'),
+    ('Balthier', 0, 12, 9000, 100000, 2.07, '/assets/images/balthier.jpeg', '/assets/images/ff12Logo.jpeg', 'Les pirates retrouvent leurs ailes'),
+    ('Edge', 0, 24, 17800, 400500, 1.48, '/assets/images/edge.jpeg', '/assets/images/ff4Logo.jpeg', 'Vous pensez que notre colère est une faiblesse ? Alors laissez-moi vous montrer... comment vous avez tort !'),
+    ('Ramza', 0, 41, 30000, 985000, 2.55, '/assets/images/ramza.jpeg', '/assets/images/ffTacticsLogo.jpeg','What stokes the fires of this conflict? ');
 
 INSERT INTO "inventory" ("users_id", "xp_amount", "powerclick_amount") VALUES
     (1, 0, 1);

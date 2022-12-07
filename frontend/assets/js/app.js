@@ -18,7 +18,11 @@ const app = {
 
             const perso_base = await response.json();
 
+            // Créer le premier personnage
+
             app.makePersoInDom(perso_base);
+
+            // Créer le premier personnage surprise
             
             app.makeMysteryBoxPerso(perso_base.id, perso_base.name)
 
@@ -40,6 +44,8 @@ const app = {
             console.log('Failed');
         }
     },
+
+    // Sert à ajouter un nouveau personnage dans la liste de ceux disponibles à l'achat
 
     makePersoInDom : function(persoData) {
 
@@ -70,9 +76,13 @@ const app = {
         persoSectionElem.appendChild(cloneTemplatePersoElem);
     },
 
-    makeMysteryBoxPerso: async function(idPreviousPerso, PreviousPersoName) {
+    // Sert à dévoiler le prochain personnage qu'il est possible d'obtenir
 
-        console.log(idPreviousPerso, PreviousPersoName);
+
+
+    // Sert à ajouter une box mystère qui tease le prochain personnage
+
+    makeMysteryBoxPerso: async function(idPreviousPerso, PreviousPersoName) {
 
         const idNextPerso = idPreviousPerso +1;
 
@@ -94,7 +104,7 @@ const app = {
 
             cloneTemplateMysteryPersoElem.querySelector('#perso-img-mystery').setAttribute('src', `.${nextPerso.game_logo_img}`);
 
-            console.log(cloneTemplateMysteryPersoElem);
+            cloneTemplateMysteryPersoElem.querySelector('#quotes').textContent = nextPerso.quotes;
 
             persoSectionElem.appendChild(cloneTemplateMysteryPersoElem);
 
@@ -154,6 +164,9 @@ const app = {
                 const costLvlUpPerso = Number(currentValue.querySelector('#cost-display').textContent);
                 if(costLvlUpPerso <= app.xp && disableButtonElem) {
                     disableButtonElem.remove();
+                } else {
+                    const buttonToDisable = currentValue.querySelector('#addLevelButton');
+                    buttonToDisable.appendChild(disableButtonElem);
                 }
             }
         )
@@ -242,7 +255,7 @@ const app = {
                 console.log(e.error || 'Impossible de récupérer les infos du personnage concernée');
             }
 
-            if(persoLvl === 1) {
+            if(persoLvl === 1 && idPerso !== 1) {
 
                 const persoName = persoElem.querySelector('#perso-name-display').textContent;
 
