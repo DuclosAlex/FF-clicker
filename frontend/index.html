@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>FF-Clicker</title>
+</head>
+<body>
+
+    <header>
+        <h1>Dissidia Final Fantasy Clicker</h1>
+        <span class="border-header"></span>
+        
+    </header>
+
+    <main class="game-section">
+
+        <section class="left-section">
+            <template id="monster-article">
+                <article class="monster-article">
+                    <img class="monster-img" src="#" alt="image de monstre">
+                </article>
+                
+            </template>
+            
+
+
+            <template class="menu-article">
+                <article class="inventory-section">
+                    <div class="xp-section">
+                        <p class="blue-inventory">Quantité d'XP</p>
+                        <p id="xp-amount" class="turquoise-inventory"></p>
+                        <p class="blue-inventory">PowerClick</p>
+                        <p id="powerclick_amount" class="turquoise-inventory"></p>
+    
+                    </div>
+                </article>
+            </template>
+        </section>
+
+        <section class="right-section">
+
+            <template id="perso-article">
+                <article class="perso-article" data-id="z">
+                    <div class="perso-img-box">
+                        <img class="perso-img" src="#" alt="">
+                        <p class="perso-name" id="perso-name-display"></p>
+                    </div>
+                    <div class="perso-detail">
+                        <p> <span class="lvl-title">Niveau  </span>: <span id="lvl-display" class="lvl-display" ></span></p>
+                        <p><span class="powerClick-title">Puissance de Click </span> : <span class="powerClick-display" id="powerClickPerso-display"></span></p>
+                        <button class="addLevelButton" id="addLevelButton">
+                            <div class="disableButtonLvlUp"></div>
+                            <span>Niveau Supérieur pour </span><span id="cost-display"></span><span> XP</span></button>
+                    </div>
+                    <div class="autoClickButton">
+                        <p class="autoClickParagraph">Automatisez </p>
+                        <p class="autoClickParagraph" id="autoClickParagraph"></p>
+                    </div>
+                </article>
+            </template>
+
+            <template id="perso-article-mystery">
+                <article class="perso-article-mystery">
+                    <div class="perso-mystery-img-box">
+                        <img class="perso-img-mystery" id="perso-img-mystery" src="z" alt="">
+                        <div class="disablePerso"></div>
+                        <p class="UnlockingPerso" id="UnlockingPerso">Débloquez <span id="UnlockingPersoName"></span> pour découvrir</p>
+                    </div>
+                </article>
+            </template>
+            
+        </section>
+    </main>
+    
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>
