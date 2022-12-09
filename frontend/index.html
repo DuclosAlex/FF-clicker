@@ -45,7 +45,7 @@
 
             <template id="perso-article">
                 <article class="perso-article" data-id="z">
-                    <div class="disableButtonLvlUp"></div>
+                    <div class="notBuyPerso" id="notBuyPerso"></div>
                     <div class="perso-img-box">
                         <img class="perso-img" src="#" alt="">
                         <p class="perso-name" id="perso-name-display"></p>
@@ -53,7 +53,7 @@
                     <div class="perso-detail">
                         <p> <span class="lvl-title">Niveau  </span>: <span id="lvl-display" class="lvl-display" ></span></p>
                         <p><span class="powerClick-title">Puissance de Click </span> : <span class="powerClick-display" id="powerClickPerso-display"></span></p>
-                        <button class="addLevelButton" id="addLevelButton">
+                        <button class="addLevelButton" id="addLevelButton" can-buy="false">
                             <span>Niveau Supérieur pour </span><span id="cost-display"></span><span> XP</span></button>
                     </div>
                     <div class="autoClickButton">
@@ -68,7 +68,7 @@
                     <div class="perso-mystery-img-box">
                         <img class="perso-img-mystery" id="perso-img-mystery" src="z" alt="">
                         <p id ="quotes" class="quotes"></p>
-                        <div class="disablePerso"></div>
+                        <div class="disable-mystery-perso"></div>
                         <p class="UnlockingPerso" id="UnlockingPerso"><span id="UnlockingPersoName"></span> required</p>
                     </div>
                 </article>
