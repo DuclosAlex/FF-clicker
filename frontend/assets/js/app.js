@@ -1,14 +1,24 @@
 // const persoFonction = require('./modules/persoFonction');
 
+
 const app = {
 
+    // Initialisation de la vleur d'xp totale et du pwerclick totale
+    // Sera disponible partout dans app
     xp : 0,
     powerclick : 1,
 
+    // Fonc tion d'initialisation lancé au chargement de la page
+
     init : function() {
+
+        // ON appelle la toute première fonction, qui charge la base du jeu
 
         app.getDataFromApi();
     },
+
+    // Cette fonction récupèe les informations néccéssaires au lancement de la partie
+    // Inventaire, personnage de base, monstre de base
 
     getDataFromApi : async function() {
         try {
@@ -24,13 +34,17 @@ const app = {
 
             // Créer le premier personnage surprise
             
-            app.makeMysteryBoxPerso(perso_base.id, perso_base.name)
+            app.makeMysteryBoxPerso(perso_base.id, perso_base.name);
+
+            // Créer le premier monstre
 
             const responseMonster = await fetch(`http://localhost:3000/monster/1`);
 
             const monster = await responseMonster.json();
 
             app.makeMonsterInDOM(monster);
+
+            // Charge l'inventaire de départ
 
             const responseInventory = await  fetch(`http://localhost:3000/inventory/1`);
 
@@ -45,15 +59,26 @@ const app = {
         }
     },
 
-    // Sert à ajouter un nouveau personnage dans la liste de ceux disponibles à l'achat
+    /**
+     * Fonction qui sert a ajouter au DOM ujn nouveau personnage achetable en se servant des infos de base de la BDD
+     * @param {*} persoData Object - Objet qui contient toutes les infos du personnage récupéré en BDD
+     */
 
     makePersoInDom : function(persoData) {
 
+        // On récupère la section qui contiendra les personnges
+
         const persoSectionElem = document.querySelector('.right-section');
+
+        // On récupèe le template qui sert de base à la création d'un personnage(article)
 
         const templatePersoElem = document.querySelector('#perso-article');
 
+        // On cloene le template
+
         const cloneTemplatePersoElem = templatePersoElem.content.cloneNode(true);
+
+        // On ajoute dans le clone de notre template toute sles infos du personnage
 
         cloneTemplatePersoElem.querySelector('.perso-name').textContent = persoData.name;
 
@@ -69,22 +94,34 @@ const app = {
 
         cloneTemplatePersoElem.querySelector('.perso-article').setAttribute('data-id', `${persoData.id}` )
 
+        // On récupèe le boutton qui contiendra la fonction lvlUp et on ajoute la fonction concernée
+
         const addLevelButtonElem = cloneTemplatePersoElem.querySelector('#addLevelButton');
 
         addLevelButtonElem.addEventListener("click", app.lvlUpPersonnage)
+
+        // On ajoute notre personnage(article) dans le DOM à l'endroit voulu
 
         persoSectionElem.appendChild(cloneTemplatePersoElem);
     },
 
     // Sert à dévoiler le prochain personnage qu'il est possible d'obtenir
 
+    /**
+     * Fonction 
+     * @param {*} idPreviousPerso  int correspond à l'id du personnage précédant
+     */
+
     makeNextPersoToBuyInDOM : async function(idPreviousPerso) {
+
+        // Pour obtenir l'id du prochain personnage à débloquer
+        // On ajoute 1 à l'id du personnage précédant, qui est passé en paramètre de la fonction
 
         const idNextPerso = idPreviousPerso +1;
 
         try {
              
-            const response = await fetch(`http://localhost:3000/personnage_base/${idNextPerso}`);
+            const response = await fetch(`http://localhost:3000/personnage_base/${idNextPerso}`);           
             
             const nextPerso = await response.json();
 
@@ -128,7 +165,11 @@ const app = {
         }
     },
 
-    // Sert à ajouter une box mystère qui tease le prochain personnage
+    /**
+     * 
+     * @param {*} idPreviousPerso int correspond à l'id du personnage précédant
+     * @param {*} PreviousPersoName string correspond au nom du personnage à acheter pour dévoiler le personnnage mystère
+     */
 
     makeMysteryBoxPerso: async function(idPreviousPerso, PreviousPersoName) {
 
@@ -193,6 +234,11 @@ const app = {
 
     /* Fonction de jeu */
 
+    /**
+     * Fonction qui se déclenche au click sur un monstre et qui permet de gagner de l'xp
+     * Gère aussi l'activation/désactivation des boutons de Level Up en fonction de l'XP totale
+     */
+
     clickToGainXP : function() {
 
         app.xp = app.xp + app.powerclick; 
@@ -216,11 +262,8 @@ const app = {
                         lvlUpButtonElem.setAttribute('can-buy', true);
                         const disableButtonElem = currentValue.querySelector('.disableButtonLvlUp');
                         if(disableButtonElem) {
-                            console.log("je passe")
                             disableButtonElem.remove();
-                        }
-
-                        
+                        }                        
                     }
                     else if( canBuy === "false"){
                         const disableButtonElem = lvlUpButtonElem.querySelector('.disableButtonLvlUp');
@@ -239,6 +282,11 @@ const app = {
             }
         )
     },
+
+    /**
+     * Cette fonction déclenche l'augmentation du niveau d'un personnage et toutes les conséquences qui en découlent
+     * @param {*} event paramètre obtenue au lancement de l'event et permetta,t avec event.target de cibler l'élément HTML ciblée
+     */
 
     lvlUpPersonnage : async function (event) {
 
@@ -338,12 +386,9 @@ const app = {
                                 disableButtonElem.classList.add('disableButtonLvlUp');
                                 currentValue.querySelector('#addLevelButton').appendChild(disableButtonElem);
                                 currentValue.querySelector('#addLevelButton').setAttribute('can-buy', false);
-
-                            }
-                            
+                            }                  
                         }
-                    }
-                    
+                    }       
                 )
                 // Augmentation du powerclick général
 
@@ -364,7 +409,8 @@ const app = {
                     persoElem.querySelector('#powerClickPerso-display').textContent = powerclickPerso;
                 }
             } catch(e) {
-                console.log(e.error || 'Impossible de récupérer les infos du personnage concernée');
+                cpnsole.log(e);
+                console.log('Impossible de récupérer les infos du personnage concernée');
             }            
         }        
     },

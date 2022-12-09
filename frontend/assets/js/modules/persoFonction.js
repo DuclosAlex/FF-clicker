@@ -1,66 +1,51 @@
 const persoFonction = {
 
-    lvlUpPersonnage : async function () {
+    clickToGainXP : function() {
 
-        const persoElem = document.querySelector('.perso-article');
+        app.xp = app.xp + app.powerclick; 
 
-        const idPerso = Number(persoElem.getAttribute('data-id'));
+        document.querySelector('#xp-amount').innerHTML = app.xp;
 
-        const displayLevelElem = document.querySelector('#lvl-display');
+        const allPersoElem = document.querySelectorAll('.perso-article');
 
-        let persoLvl = Number(displayLevelElem.textContent);
+        allPersoElem.forEach(
+            function(currentValue) {
 
-        let costLevelUp = Number(document.querySelector('#cost-display').textContent);
+                const lvlUpButtonElem = currentValue.querySelector('#addLevelButton');
+                const costLvlUpPerso = Number(currentValue.querySelector('#cost-display').textContent);
+                let canBuy = lvlUpButtonElem.getAttribute('can-buy');
 
-        if(costLevelUp > app.xp) {
-            alert("Vous n'avez pas suffisament d'XP");
-        } else {
+                if(costLvlUpPerso <= app.xp ) {
+                    const persoLvl = Number(currentValue.querySelector('#lvl-display').textContent)
 
-            persoLvl += 1;
-            displayLevelElem.textContent = persoLvl;
-            app.xp = app.xp - costLevelUp; 
-            document.querySelector('#xp-amount').textContent = app.xp;
+                    if(persoLvl === 0) {
+                        lvlUpButtonElem.classList.add('zIndex');
+                        lvlUpButtonElem.setAttribute('can-buy', true);
+                        const disableButtonElem = currentValue.querySelector('.disableButtonLvlUp');
+                        if(disableButtonElem) {
+                            console.log("je passe")
+                            disableButtonElem.remove();
+                        }
 
-            try {
-
-                
-                const response = await fetch(`http://localhost:3000/personnage_base/${idPerso}`);
-                
-                const perso = await response.json();
-                
-                console.log(perso);
-
-                // Augmentation du coût du personnage en l'arrondissant
-
-                costLevelUp = Math.round(costLevelUp * perso.growthRate);
-
-                document.querySelector('#cost-display').textContent = costLevelUp;
-
-                // Augmentation du powerclick général
-
-                app.powerclick = app.powerclick + perso.powerClick;
-
-                document.querySelector('#powerclick_amount').textContent = app.powerclick;
-
-                if(persoLvl > 1 ) {
-
-                    let powerclickPerso = Number(document.querySelector('#powerClickPerso-display').textContent);
-
-                    powerclickPerso = powerclickPerso + perso.powerClick;
-
-                    document.querySelector('#powerClickPerso-display').textContent = powerclickPerso;
+                        
+                    }
+                    else if( canBuy === "false"){
+                        const disableButtonElem = lvlUpButtonElem.querySelector('.disableButtonLvlUp');
+                        disableButtonElem.remove();
+                        lvlUpButtonElem.setAttribute('can-buy', true);
+                    }
                 }
 
+                if(costLvlUpPerso >= app.xp && canBuy === "true") {
 
-
-            } catch(e) {
-                console.log(e.error || 'Failed');
+                    const disableButtonElem = document.createElement('div');
+                    disableButtonElem.classList.add('disableButtonLvlUp');
+                    currentValue.querySelector('#addLevelButton').appendChild(disableButtonElem);
+                    currentValue.querySelector('#addLevelButton').setAttribute('can-buy', false);
+                }
             }
-            
-        }
-
-        
+        )
     },
 }
 
-module.exports = persoFonction;
+export default persoFonction;
