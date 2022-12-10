@@ -11,6 +11,12 @@ Monster.init({
     images: {
         type: DataTypes.TEXT,
         allowNull : false
+    },
+    pv: {
+        type : DataTypes.INTEGER
+    },
+    is_boss: {
+        type : DataTypes.BOOLEAN
     }
 }, {
     sequelize, 

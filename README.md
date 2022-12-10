@@ -14,26 +14,27 @@ Cette expérience pourra être dépensé pour acquérir des personnages et obten
 - Gestion des Click et Gain d'xp
 - Augmentation du Lvl d'un personnage et diminution du sotck d'XP en conséquence
 - Ajout du prochain personnage a acheté quand le dernier personnage de la liste passe au Lvl 1
-- Ajout du personnage mystère quand le dernier personnage non acheté est dévoilé 
-- Gestion de l'activation/désactivation des bouttons de Level Up 
-- 
+- Ajout du personnage mystère quand le dernier personnage non acheté est dévoilé
+- Gestion de l'activation/désactivation des bouttons de Level Up
 
 ## Tâche/Feature à travailler
 
-- Versionning de la BDD 
+- Modifier le backend, passer de Sequelize à un modèle avec Datamapper
+- Versionning de la BDD
 - Modification de la BDD pour correspondre au rework du MCD
 - Seeding plus important de la BDD pour poursuivre le développement
-- Potentiel test à mettre en place ? 
+- Potentiel test à mettre en place ?
 - Ajout de la feature qui gère les points de vie des monstres clickés
 - Ajout de la feature qui modifie le monstre à clicker si les PV du monstre précédant atteigne ou dépasse 0 ( Manuel/Auto ? )
-- Ajout du Gain de Gil en battant un ennemie
+- Ajout du gain de Gil en battant un ennemie
 - Ajout du système de Zone/Stage
-- Ajout d'un système de temps limite pour vaincre un ennemi/Boss ? 
+- Ajout d'un système de temps limite pour vaincre un ennemi/Boss ?
+- Gérer le CSS/HTML pour toutes les nouvelles features
 
 ### Pour le futur
 
-- Ajout de l'autoclick 
+- Ajout de l'autoclick
 - Ajout du Login/Register
 - Gestion de la récupération des personnages lors de la connexion
-- Gestion des gains hors connexion ? 
+- Gestion des gains hors connexion ?
 - Gestion sauvegarde de la partie
