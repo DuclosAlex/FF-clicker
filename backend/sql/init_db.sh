@@ -6,7 +6,7 @@ export PGUSER=SpeData
 
 #1.1 Je supprime le user s'il existe et la BDD 
 
-#dropdb ff_clicker
+dropdb ff_clicker
 dropuser ff_clicker
 
 #1 Création de la BDD 

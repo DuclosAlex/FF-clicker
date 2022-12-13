@@ -2,18 +2,11 @@ const PersonnageBase = require('./personnage_base');
 const Monster = require('./monster');
 const Users = require('./users');
 const PersonnagesFromUser = require('./personnages_from_user');
-const Teams = require('./teams');
 const Inventory = require('./inventory');
-
+const Stage = require('./stages');
+const Zone = require('./zone');
 
 // USER
-
-Users.hasOne(Teams, {
-    foreignKey: {
-        name : 'users_id'
-    },
-    as: 'teams'
-});
 
 Users.hasOne(Inventory, {
     foreignKey: {
@@ -21,16 +14,6 @@ Users.hasOne(Inventory, {
     },
     as: 'inventory'
 });
-
-//Teams 
-
-Teams.belongsTo(Users, {
-    foreignKey: {
-        name : 'users_id',
-    }, 
-    as : 'users'
-});
-
 // Inventory 
 
 Inventory.belongsTo(Users, {
@@ -40,23 +23,20 @@ Inventory.belongsTo(Users, {
     as : 'users'
 });
 
+// Monser/Stage relation 
 
-
-// RELATION Teams/PersonnageFromUser
-
-Teams.hasMany(PersonnagesFromUser, {
-    foreignKey: {
-       name : 'teams_id'       
-    },
-    as : 'personnages'
-});
-
-PersonnagesFromUser.belongsTo(Teams, {
+Stage.hasMany(Monster, {
     foreignKey : {
-        name : 'teams_id',
-        allowNull : false
+        name : "stage_id"
     },
-    as : 'personnages'
+    as : "monster"
+})
+
+Monster.belongsTo(Stage, {
+    foreignKey : {
+        name : "stage_id"
+    }, 
+    as : 'stages'
 });
 
 // Export de mes modèles
@@ -65,7 +45,8 @@ module.exports = {
     PersonnageBase,
     Monster,
     Users,
-    Teams,
     PersonnagesFromUser,
-    Inventory
+    Inventory,
+    Stage,
+    Zone
 }

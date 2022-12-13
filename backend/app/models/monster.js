@@ -8,7 +8,7 @@ Monster.init({
         type: DataTypes.TEXT,
         allowNull: false
     },
-    images: {
+    image: {
         type: DataTypes.TEXT,
         allowNull : false
     },

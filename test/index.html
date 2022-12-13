@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <section class="right-section">
+
+        <template id="perso-article">
+            <article class="perso-article" data-id="z">
+                <div class="notBuyPerso" id="notBuyPerso"></div>
+                <div class="perso-img-box">
+                    <img class="perso-img" src="#" alt="">
+                    <p class="perso-name" id="perso-name-display"></p>
+                </div>
+                <div class="perso-detail">
+                    <p> <span class="lvl-title">Niveau  </span>: <span id="lvl-display" class="lvl-display" ></span></p>
+                    <p><span class="powerClick-title">Puissance de Click </span> : <span class="powerClick-display" id="powerClickPerso-display"></span></p>
+                    <button class="addLevelButton" id="addLevelButton" can-buy="false">
+                        <span>Niveau Supérieur pour </span><span id="cost-display"></span><span> XP</span></button>
+                </div>
+                <div class="autoClickButton">
+                    <p class="autoClickParagraph">Automatisez </p>
+                    <p class="autoClickParagraph" id="autoClickParagraph"></p>
+                </div>
+            </article>
+        </template>
+        </section>
+
+    <button id="addLevelAndXP">Lvl Up</button>
+    <p id="display-xp" style="font-size : 50px;"></p>
+    
+    <script src="test.lvlup.js" type="module"></script>
+</body>
+
+</html>

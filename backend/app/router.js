@@ -2,6 +2,7 @@ const express = require("express");
 const personnageBaseController = require('./controllers/personnage_baseController');
 const monsterController = require('./controllers/monsterController');
 const inventoryController = require('./controllers/inventoryController');
+const zoneController = require('./controllers/zoneController');
 
 const router = express.Router();
 

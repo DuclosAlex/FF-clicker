@@ -1,20 +1,21 @@
-// const persoFonction = require('./modules/persoFonction');
+import PersonnageBase from "./modules/class/PersonnageBase.js";
 
 
 const app = {
 
-    // Initialisation de la vleur d'xp totale et du pwerclick totale
+    // Initialisation de la valeur d'xp totale et du powerclick totale
     // Sera disponible partout dans app
     xp : 0,
     powerclick : 1,
 
     // Fonc tion d'initialisation lancé au chargement de la page
 
-    init : function() {
+    init : async function() {
 
         // ON appelle la toute première fonction, qui charge la base du jeu
 
         app.getDataFromApi();
+
     },
 
     // Cette fonction récupèe les informations néccéssaires au lancement de la partie
@@ -28,9 +29,15 @@ const app = {
 
             const perso_base = await response.json();
 
+            // const cloud = new PersonnageBase(perso_base);
+
             // Créer le premier personnage
 
+            const persoSectionElem = document.querySelector('.right-section');
+
             app.makePersoInDom(perso_base);
+
+            // persoSectionElem.appendChild(cloud);
 
             // Créer le premier personnage surprise
             
@@ -55,16 +62,17 @@ const app = {
 
         }
         catch(e) {
+            console.log(e)
             console.log('Failed');
         }
     },
 
-    /**
+     /**
      * Fonction qui sert a ajouter au DOM ujn nouveau personnage achetable en se servant des infos de base de la BDD
      * @param {*} persoData Object - Objet qui contient toutes les infos du personnage récupéré en BDD
      */
 
-    makePersoInDom : function(persoData) {
+      makePersoInDom : function(persoData) {
 
         // On récupère la section qui contiendra les personnges
 
@@ -211,7 +219,7 @@ const app = {
 
         cloneTemplateMonsterElem.querySelector('.monster-article').addEventListener('click', app.clickToGainXP)
 
-        cloneTemplateMonsterElem.querySelector('.monster-img').setAttribute('src', `.${monsterData.images}`);
+        cloneTemplateMonsterElem.querySelector('.monster-img').setAttribute('src', `.${monsterData.image}`);
 
         monsterSectionElem.appendChild(cloneTemplateMonsterElem);
     },

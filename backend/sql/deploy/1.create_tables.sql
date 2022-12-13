@@ -1,12 +1,6 @@
 --  Deploy ff_clicker:1.create_tables to pg
 
-DROP TABLE IF EXISTS "monster",
-"stages",
-"zone",
-"personnages_from_user", 
-"personnage_base",
-"inventory",
-"users" CASCADE;
+
 
 BEGIN;
 CREATE TABLE IF NOT EXISTS "users" (

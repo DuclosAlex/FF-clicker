@@ -2,6 +2,12 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+DROP TABLE IF EXISTS "monster",
+"stages",
+"zone",
+"personnages_from_user", 
+"personnage_base",
+"inventory",
+"users" CASCADE;
 
 COMMIT;
