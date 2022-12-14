@@ -8,6 +8,7 @@ import clickEventHandler from "./modules/event/clickEventHandler.js";
 const app = {
 
     user : undefined,
+    allPerso : [],
     // Fonc tion d'initialisation lancé au chargement de la page
 
     init : async function() {
@@ -22,7 +23,8 @@ const app = {
             const monster = await initGame.getMonster();
             const persoSectionElem = document.querySelector('.right-section');
             const leftSection = document.querySelector('.left-section');
-            console.log(inventory.xp)
+            app.allPerso.push(cloud);
+            console.log(app.allPerso);
             leftSection.appendChild(monster);
             leftSection.appendChild(inventory);
             
@@ -31,50 +33,6 @@ const app = {
         } catch(e) {
             console.log(e);
         }
-
-
-    },
-
-    // Cette fonction récupèe les informations néccéssaires au lancement de la partie
-    // Inventaire, personnage de base, monstre de base
-
-    getDataFromApi : async function() {
-        try {
-
-            // Créer le premier personnage surprise
-            
-            // app.makeMysteryBoxPerso(perso_base.id, perso_base.name);
-
-            // Créer le premier monstre
-
-            const responseMonster = await fetch(`http://localhost:3000/monster/1`);
-
-            const monster = await responseMonster.json();
-
-            app.makeMonsterInDOM(monster);
-        }
-        catch(e) {
-            console.log(e)
-            console.log('Failed');
-        }
-    },
-
- 
-
-    
-    makeMonsterInDOM : function(monsterData) {
-
-        const monsterSectionElem = document.querySelector('.left-section');
-
-        const templateMonsterElem = document.querySelector('#monster-article');
-
-        const cloneTemplateMonsterElem = templateMonsterElem.content.cloneNode(true);
-
-        cloneTemplateMonsterElem.querySelector('.monster-article').addEventListener('click', app.clickToGainXP)
-
-        cloneTemplateMonsterElem.querySelector('.monster-img').setAttribute('src', `.${monsterData.image}`);
-
-        monsterSectionElem.appendChild(cloneTemplateMonsterElem);
     },
 }
 

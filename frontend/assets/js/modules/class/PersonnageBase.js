@@ -24,23 +24,40 @@ class PersonnageBase extends HTMLElement {
 
     levelUp () {
 
-        this.lvl += 1;
+        const perso = this.closest('personnage-base');
 
-        this.cost = Math.round(this.cost * this.growth_rate);
+        perso.lvl += 1;
 
-        if(this.lvl > 1) {
+        perso.cost = Math.round(perso.cost * perso.growth_rate);
 
-            this.current_powerclick += this.powerclick_base;
+        if(perso.lvl === 1) {
+            
+            const notBuyPersoElem = perso.querySelector('#notBuyPerso');
+            notBuyPersoElem.remove();
         }
 
-        console.log(this.current_powerclick);
+        if(perso.lvl > 1) {
 
-        this.querySelector('#lvl-display').textContent = this.lvl;
+            perso.current_powerclick += perso.powerclick_base;
+        }
 
-        this.querySelector('#cost-display').textContent = this.cost;
+        perso.querySelector('#lvl-display').textContent = perso.lvl;
 
-        this.querySelector('#powerClickPerso-display').textContent = this.current_powerclick;
-    }    
+        perso.querySelector('#cost-display').textContent = perso.cost;
+
+        perso.querySelector('#powerClickPerso-display').textContent = perso.current_powerclick;
+    }
+
+    makeBuyable () {
+
+        const addLvlButton = this.querySelector('#addLevelButton');
+        let canBuy = addLvlButton.getAttribute('can-buy');
+
+        if(this.lvl === 0) {
+            
+            addLvlButton.classList.add('zIndex');
+        }
+    }
 
     connectedCallback() {
 

@@ -12,7 +12,6 @@ class Inventory extends HTMLElement {
     addXP () {
 
         this.xp += this.powerclick;
-        console.log(this.xp);
         this.querySelector('#xp_amount').textContent = this.xp;
     }
     
