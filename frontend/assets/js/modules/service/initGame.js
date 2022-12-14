@@ -2,6 +2,7 @@ import Inventory from "../class/Inventory.js";
 import Monster from "../class/Monster.js";
 import PersonnageBase from "../class/PersonnageBase.js";
 import User from "../class/User.js";
+import clickEventHandler from "../event/clickEventHandler.js";
 
 const initGame = {
 
