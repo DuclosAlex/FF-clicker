@@ -149,13 +149,12 @@ input {
 
 .monster-article {
     border-bottom : 1rem solid var(--text-form-color);
-    height : 60%;
     text-align: center;
     padding-top : 0.5rem;
 }
 
 .monster-article img {
-    height : 50vh;
+    height : 64vh;
     width : 60%;
     cursor : pointer;
 }

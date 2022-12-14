@@ -7,10 +7,9 @@ class PersonnageBase extends HTMLElement {
         super();
         this.id = persoData.id;
         this.name = persoData.name;
-        console.log(this.lvl);
         this.lvl = persoData.lvl;
-
-        this.power_click = persoData.powerClick;
+        this.powerclick_base = persoData.powerClick;
+        this.current_powerclick = persoData.powerClick;
         this.cost = persoData.cost;
         this.auto_click_cost = persoData.autoClickCost
         this.growth_rate = persoData.growthRate;
@@ -21,15 +20,26 @@ class PersonnageBase extends HTMLElement {
         
     }
 
+    // Gestion du lvlUp de l'instance du personnage
+
     levelUp () {
-
-
 
         this.lvl += 1;
 
         this.cost = Math.round(this.cost * this.growth_rate);
 
+        if(this.lvl > 1) {
+
+            this.current_powerclick += this.powerclick_base;
+        }
+
+        console.log(this.current_powerclick);
+
         this.querySelector('#lvl-display').textContent = this.lvl;
+
+        this.querySelector('#cost-display').textContent = this.cost;
+
+        this.querySelector('#powerClickPerso-display').textContent = this.current_powerclick;
     }    
 
     connectedCallback() {
@@ -48,15 +58,13 @@ class PersonnageBase extends HTMLElement {
     
         cloneTemplatePersoElem.querySelector('#cost-display').textContent = this.cost;
     
-        cloneTemplatePersoElem.querySelector('#powerClickPerso-display').textContent = this.power_click;
+        cloneTemplatePersoElem.querySelector('#powerClickPerso-display').textContent = this.powerclick_base;
     
         cloneTemplatePersoElem.querySelector('#autoClickParagraph').textContent = `Cout en XP : ${this.auto_click_cost}`;
     
         cloneTemplatePersoElem.querySelector('.perso-img').setAttribute('src', `.${this.images}`);
     
         cloneTemplatePersoElem.querySelector('.perso-article').setAttribute('data-id', `${this.id}` )
-
-        // this.shadow.appendChild(cloneTemplatePersoElem);
 
         this.appendChild(cloneTemplatePersoElem);
     }

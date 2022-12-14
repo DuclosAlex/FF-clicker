@@ -1,8 +1,6 @@
 import PersonnageBase from '../frontend/assets/js/modules/class/PersonnageBase.js';
-
-let xp = 10;
-
-document.querySelector('#display-xp').textContent = xp;
+import User from '../frontend/assets/js/modules/class/User.js';
+import Inventory from '../frontend/assets/js/modules/class/Inventory.js';
 
 async function callData() {
 
@@ -19,40 +17,53 @@ async function callData() {
     }
 
 }
-function increaseXP (xp) {
 
-    console.log(xp);
-    xp = xp + 5;
-    document.querySelector('#display-xp').textContent = xp;
-    console.log(xp);
-    return xp;
+async function callUser() {
+
+    try {
+        // Récupération des personnages depuis l'API
+        const response = await fetch(`http://localhost:3000/user/1`);
+
+        const user = await response.json();
+
+        console.log(user)
+
+        return user;
+
+    } catch(e) {
+        console.log(e);
+    }
 
 }
 
-console.log('coucou');
 const perso = await callData();
-
-console.log(perso);
+const user = await callUser();
 
 let cloud = new PersonnageBase(perso);
 
-console.log(cloud);
+let alex = new User(user);
 
-console.log(cloud.lvl);
+let inventory = new Inventory(user);
+
+console.log(inventory);
+
+console.log(alex);
 
 const body = document.querySelector('body');
-
 
 body.appendChild(cloud);
 
 function lvlUpAndIncreaseXP() {
 
-    cloud.levelUp();
-    xp = increaseXP(xp);
+    cloud.levelUp();  
+    alex.xpIncrease();
+    document.querySelector('#display-xp').textContent = alex.xp;  
 
 }
 
 const button = document.querySelector('#addLevelAndXP');
+
+
 
 console.log(button);
 
