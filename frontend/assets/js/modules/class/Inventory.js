@@ -14,6 +14,12 @@ class Inventory extends HTMLElement {
         this.xp += this.powerclick;
         this.querySelector('#xp_amount').textContent = this.xp;
     }
+
+    deduceCostFromXP (cost) {
+
+        this.xp = this.xp - cost;
+        this.querySelector('#xp_amount').textContent = this.xp;
+    }
     
     addPowerclick(persoLvlUp) {
         
@@ -21,6 +27,12 @@ class Inventory extends HTMLElement {
         console.log(this.powerclick);
         this.querySelector('#powerclick_amount').textContent = this.powerclick;
 
+    }
+
+    addInDOM () {
+
+        const leftSection = document.querySelector('.left-section');
+        leftSection.appendChild(this);
     }
 
     connectedCallback() {

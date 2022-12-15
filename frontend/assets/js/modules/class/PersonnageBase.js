@@ -1,4 +1,4 @@
-
+import levelUpHandler from "../event/levelUpHandler.js";
 
 class PersonnageBase extends HTMLElement {
 
@@ -16,7 +16,8 @@ class PersonnageBase extends HTMLElement {
         this.images = persoData.images;
         this.game_logo_img = persoData.game_logo_img;
         this.quotes = persoData.quotes;
-        this.episode = persoData.episode;        
+        this.episode = persoData.episode;    
+        this.can_buy = false;    
         
     }
 
@@ -48,15 +49,43 @@ class PersonnageBase extends HTMLElement {
         perso.querySelector('#powerClickPerso-display').textContent = perso.current_powerclick;
     }
 
+    addInDOM () {
+
+        const persoSection = document.querySelector('.right-section');
+        persoSection.appendChild(this);
+    }
+
+    makeFirstBuyable () {
+
+        console.log('hello')
+        this.can_buy = true;
+        const addLevelButton = this.querySelector('#addLevelButton');
+        addLevelButton.classList.add('zIndex');
+    }
+
     makeBuyable () {
 
-        const addLvlButton = this.querySelector('#addLevelButton');
-        let canBuy = addLvlButton.getAttribute('can-buy');
+        this.can_buy = true;
+        const disableButtonElem = this.querySelector('.disableButtonLvlUp');
+        disableButtonElem.remove();
+    }
 
-        if(this.lvl === 0) {
-            
-            addLvlButton.classList.add('zIndex');
-        }
+    makeNotBuyable () {
+
+        this.can_buy = false;
+        const disableButtonElem = document.createElement('div');
+        disableButtonElem.classList.add('disableButtonLvlUp');
+        const addLevelButton = this.querySelector('#addLevelButton');
+        addLevelButton.appendChild(disableButtonElem);
+        
+    }
+
+    makeNotFirstBuyable () {
+
+        this.can_buy = false;
+        const addLevelButton = this.querySelector('#addLevelButton');
+        addLevelButton.classList.remove('zIndex');
+        console.log('error')
     }
 
     connectedCallback() {
@@ -82,6 +111,10 @@ class PersonnageBase extends HTMLElement {
         cloneTemplatePersoElem.querySelector('.perso-img').setAttribute('src', `.${this.images}`);
     
         cloneTemplatePersoElem.querySelector('.perso-article').setAttribute('data-id', `${this.id}` )
+
+        const addLevelButton = cloneTemplatePersoElem.querySelector('#addLevelButton');
+
+        addLevelButton.addEventListener('click', levelUpHandler.levelUpEvent)
 
         this.appendChild(cloneTemplatePersoElem);
     }

@@ -15,9 +15,6 @@ const userController = {
             },
             include : 'inventory'
         });
-
-        console.log(result)
-
         res.json(result)
     }
 }

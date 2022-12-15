@@ -4,19 +4,38 @@ import PersonnageBase from "../class/PersonnageBase.js";
 import User from "../class/User.js";
 import clickEventHandler from "../event/clickEventHandler.js";
 
-const initGame = {
+const beginGame = {
 
-    getCloud : async function() {
+    init : async function (allPerso) {
+
+        let cloud = allPerso[0];
+        let yshtola = allPerso[1];
+        cloud.addInDOM();
+        yshtola.addInDOM();
+        let monster = await beginGame.getMonster();
+        let inventory = await beginGame.getInventory();
+        monster.addInDOM();
+        inventory.addInDOM();
+
+    },
+
+    getAllPerso : async function() {
 
         try {
 
             // Récupération des personnages depuis l'API
-            const response = await fetch(`http://localhost:3000/personnage_base/1`);
+            const response = await fetch(`http://localhost:3000/personnage_base`);
 
-            const perso_base = await response.json();
+            const allPersoBase= await response.json();
 
-            const cloud =  new PersonnageBase(perso_base);
-            return cloud;
+            const allPerso = [];
+
+            for( let perso of allPersoBase) {
+
+                perso = new PersonnageBase(perso);
+                allPerso.push(perso);
+            }
+            return allPerso;
             
         }
         catch(e) {
@@ -51,7 +70,6 @@ const initGame = {
             const result = await response.json();
 
             const monster = new Monster(result);
-            console.log(monster);
             return monster;
         } catch(e) {
             console.log(e);
@@ -77,4 +95,4 @@ const initGame = {
 
 }
 
-export default initGame;
+export default beginGame;
