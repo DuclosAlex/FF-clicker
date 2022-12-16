@@ -17,17 +17,18 @@ class mysteryPersonnage extends HTMLElement {
         rightSection.appendChild(this);
     }
 
-
-
     connectedCallback() {
 
-        const templateMysteryPersoElem = document.querySelector('#perso-article-mysterery');
+        const templateMysteryPersoElem = document.querySelector('#perso-article-mystery');
 
-        const cloneTemplatePersoElem = templateMysteryPersoElem.textContent.cloneNode(true);
+        const cloneTemplatePersoElem = templateMysteryPersoElem.content.cloneNode(true);
 
-        cloneTemplatePersoElem.querySelector('#perso-img-mystery').setAttribute('src', `.${this.game_logo_img}`);
+        console.log(cloneTemplatePersoElem);
+        cloneTemplatePersoElem.querySelector('#perso-img-mystery').setAttribute('src', `.${this.logo}`);
 
         cloneTemplatePersoElem.querySelector('#quotes').textContent = this.quotes;
+
+        cloneTemplatePersoElem.querySelector('#unlockingPersoName').textContent = this.persoRequiredName;
 
         this.appendChild(cloneTemplatePersoElem);
 

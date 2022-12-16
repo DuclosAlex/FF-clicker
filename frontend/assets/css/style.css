@@ -208,7 +208,7 @@ input {
     background-color : white; 
     box-shadow : 3px 2px 7px black, -3px -2px 7px black;
     padding : 0.9rem;
-    top : 25%;
+    top : 15%;
     left : 35%;
     width : 50%;
     font-size : 3rem;
@@ -298,7 +298,7 @@ input {
     z-index : 100000;
 }
 
-.UnlockingPerso {
+.unlockingPerso {
     position : absolute;
     bottom : 0.5rem;
     left : 0.5rem;

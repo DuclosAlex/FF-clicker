@@ -2,6 +2,7 @@ import Inventory from "../class/Inventory.js";
 import Monster from "../class/Monster.js";
 import User from "../class/User.js";
 import getData from "./getData.js";
+import mysteryPersonnage from "../class/mysteryPersonnage.js";
 
 const beginGame = {
 
@@ -11,6 +12,8 @@ const beginGame = {
 
         let cloud = allPerso[0];
         cloud.addInDOM();
+        const firstMysteryPerso = new mysteryPersonnage(allPerso[1], cloud.name);
+        firstMysteryPerso.addInDOM();
         let monster = await beginGame.getMonster();
         let inventory = await beginGame.getInventory();
         monster.addInDOM();
