@@ -1,4 +1,5 @@
 import PersonnageBase from "../class/PersonnageBase.js";
+import mysteryPersonnage from "../class/mysteryPersonnage.js";
 
 const getData = {
 
@@ -27,6 +28,20 @@ const getData = {
             console.log('Failed');
         }
     },
+
+    getNewPerso (currentPersoId) {
+
+        const indexNewPerso = Number(currentPersoId);
+        const newPerso = getData.allPerso[indexNewPerso];
+        return newPerso;
+    },
+
+    getMysteryPerso (currentPersoId) {
+
+        const indexMysteryPerso = Number(currentPersoId ) + 1;
+        const mysteryPerso = new mysteryPersonnage(getData.allPerso[indexMysteryPerso], getData.allPerso[currentPersoId].name );
+        return mysteryPerso;
+    }
 }
 
 export default getData;

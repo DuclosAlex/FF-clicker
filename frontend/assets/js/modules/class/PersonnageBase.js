@@ -59,7 +59,6 @@ class PersonnageBase extends HTMLElement {
 
     makeFirstBuyable () {
 
-        console.log('hello')
         this.can_buy = true;
         const addLevelButton = this.querySelector('#addLevelButton');
         addLevelButton.classList.add('zIndex');

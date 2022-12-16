@@ -24,9 +24,7 @@ class Inventory extends HTMLElement {
     addPowerclick(persoLvlUp) {
         
         this.powerclick += persoLvlUp.powerclick_base;
-        console.log(this.powerclick);
         this.querySelector('#powerclick_amount').textContent = this.powerclick;
-
     }
 
     addInDOM () {
@@ -45,7 +43,6 @@ class Inventory extends HTMLElement {
 
         cloneTemplateInventoryElem.querySelector('#powerclick_amount').textContent = this.powerclick;
 
-        console.log(cloneTemplateInventoryElem);
         this.appendChild(cloneTemplateInventoryElem);
 
     }

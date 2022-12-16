@@ -23,7 +23,6 @@ class mysteryPersonnage extends HTMLElement {
 
         const cloneTemplatePersoElem = templateMysteryPersoElem.content.cloneNode(true);
 
-        console.log(cloneTemplatePersoElem);
         cloneTemplatePersoElem.querySelector('#perso-img-mystery').setAttribute('src', `.${this.logo}`);
 
         cloneTemplatePersoElem.querySelector('#quotes').textContent = this.quotes;
