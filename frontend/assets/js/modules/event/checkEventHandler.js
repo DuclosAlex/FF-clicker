@@ -7,9 +7,7 @@ const checkEventHandler = {
         const inventory = document.querySelector('inventory-section');
 
         const allPerso = document.querySelectorAll('personnage-base');
-        for( const perso of allPerso) {
-
-            console.log('hello');       
+        for( const perso of allPerso) {     
 
             if(perso.lvl === 0) {
 
@@ -34,8 +32,6 @@ const checkEventHandler = {
     
                 } 
                 else if( inventory.xp > perso.cost  && perso.can_buy === false){
-                    console.log(inventory.xp)
-                    console.log(perso.cost)
                     console.log(` ${perso.name} est second achetable`);
                     perso.makeBuyable();
                 }
