@@ -13,29 +13,23 @@ const checkEventHandler = {
 
 
                 if( inventory.xp >= perso.cost && perso.can_buy === false) {
-                    console.log(` ${perso.name} est first achetable`);
                     perso.makeFirstBuyable();          
                 }
                 else if( inventory.xp < perso.cost && perso.can_buy === true) {
-                    console.log(` ${perso.name} n'est pas achetable`);
                     perso.makeNotFirstBuyable();
                 }
-                else console.log(`${perso.name } n'est pas concerné`)
             }
 
             if(perso.lvl > 0) {
 
 
                 if(inventory.xp < perso.cost  && perso.can_buy === true) {
-                    console.log(` ${perso.name} n'est pas achetable`);
                     perso.makeNotBuyable();
     
                 } 
                 else if( inventory.xp > perso.cost  && perso.can_buy === false){
-                    console.log(` ${perso.name} est second achetable`);
                     perso.makeBuyable();
                 }
-                else console.log(`${perso.name } n'est pas concerné`)
             }
         }
     } 
