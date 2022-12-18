@@ -20,28 +20,22 @@ const levelUpHandler = {
             let idPerso = Number(currentPerso.id);         
 
             if(idPerso + 1 === getData.allPerso.length) {
-                console.log(getData.allPerso.length);
                 const mysteryPerso = document.querySelector('mystery-perso');
                 mysteryPerso.remove();
                 addInDOM.addLastPersoInDOM();
             }
-            else if( idPerso === getData.allPerso.length) {
-                console.log(getData.allPerso.length);
-                console.log(idPerso);
-                console.log(currentPerso);
-                inventory.addPowerclick(currentPerso);
-                checkEventHandler.checkPersoBuyable();
-                console.log('hello');
-                return;
-            }
             else {
 
                 const mysteryPerso = document.querySelector('mystery-perso');
-                mysteryPerso.remove();
+                if(mysteryPerso) {
+
+                    mysteryPerso.remove();
+                    addInDOM.addNewPersoAndMysteryPersoInDOM(currentPerso);
+                }
                 
-                addInDOM.addNewPersoAndMysteryPersoInDOM(currentPerso);
             }
         }
+
         inventory.addPowerclick(currentPerso);
         checkEventHandler.checkPersoBuyable();
     }

@@ -15,8 +15,6 @@ const getData = {
 
             const allPersoBase= await response.json();
 
-            console.log(allPersoBase)
-
             for( let perso of allPersoBase) {
 
                 perso = new PersonnageBase(perso);

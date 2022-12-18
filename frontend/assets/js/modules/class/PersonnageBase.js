@@ -11,9 +11,7 @@ class PersonnageBase extends HTMLElement {
         this.powerclick_base = persoData.power_click;
         this.current_powerclick = persoData.power_click;
         this.cost = persoData.cost;
-        console.log(persoData.cost);
-        console.log(this.cost)
-        this.auto_click_cost = persoData.auto_click_cost
+        this.auto_click_cost = persoData.auto_click_cost;
         this.growth_rate = persoData.growth_rate;
         this.images = persoData.images;
         this.game_logo_img = persoData.game_logo_img;
