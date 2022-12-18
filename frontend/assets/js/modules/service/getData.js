@@ -11,9 +11,11 @@ const getData = {
         try {
 
             // Récupération des personnages depuis l'API
-            const response = await fetch(`http://localhost:3000/personnage_base`);
+            const response = await fetch(`http://localhost:3000/personnageBase`);
 
             const allPersoBase= await response.json();
+
+            console.log(allPersoBase)
 
             for( let perso of allPersoBase) {
 

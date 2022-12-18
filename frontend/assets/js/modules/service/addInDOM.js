@@ -8,6 +8,13 @@ const addInDOM = {
         const newMysteryPerso = getData.getMysteryPerso(currentPerso.id);
         newPerso.addInDOM();
         newMysteryPerso.addInDOM();
+    },
+
+    addLastPersoInDOM (currentPerso) {
+
+        const lastPerso = getData.allPerso.pop();
+        console.log(lastPerso);
+        lastPerso.addInDOM();
     }
 }
 

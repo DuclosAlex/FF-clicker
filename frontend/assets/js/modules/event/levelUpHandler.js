@@ -5,9 +5,8 @@ import addInDOM from "../service/addInDOM.js";
 
 const levelUpHandler = {
 
-    async levelUpEvent (event) {
+    levelUpEvent (event) {
 
-        // const allPerso = await getData.getAllPerso();
         const currentPerso = event.target.closest('personnage-base');
         const inventory = document.querySelector('inventory-section');
         inventory.deduceCostFromXP(currentPerso.cost);
@@ -18,10 +17,30 @@ const levelUpHandler = {
 
         if ( currentPerso.lvl === 1) {
 
-            const mysteryPerso = document.querySelector('mystery-perso');
-            mysteryPerso.remove();
+            let idPerso = Number(currentPerso.id);         
 
-            addInDOM.addNewPersoAndMysteryPersoInDOM(currentPerso);
+            if(idPerso + 1 === getData.allPerso.length) {
+                console.log(getData.allPerso.length);
+                const mysteryPerso = document.querySelector('mystery-perso');
+                mysteryPerso.remove();
+                addInDOM.addLastPersoInDOM();
+            }
+            else if( idPerso === getData.allPerso.length) {
+                console.log(getData.allPerso.length);
+                console.log(idPerso);
+                console.log(currentPerso);
+                inventory.addPowerclick(currentPerso);
+                checkEventHandler.checkPersoBuyable();
+                console.log('hello');
+                return;
+            }
+            else {
+
+                const mysteryPerso = document.querySelector('mystery-perso');
+                mysteryPerso.remove();
+                
+                addInDOM.addNewPersoAndMysteryPersoInDOM(currentPerso);
+            }
         }
         inventory.addPowerclick(currentPerso);
         checkEventHandler.checkPersoBuyable();

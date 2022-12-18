@@ -15,6 +15,7 @@ const beginGame = {
         const firstMysteryPerso = new mysteryPersonnage(allPerso[1], cloud.name);
         firstMysteryPerso.addInDOM();
         let monster = await beginGame.getMonster();
+        console.log(monster.name);
         let inventory = await beginGame.getInventory();
         monster.addInDOM();
         inventory.addInDOM();
@@ -25,11 +26,13 @@ const beginGame = {
 
         try {
             // Récupération des personnages depuis l'API
-            const response = await fetch(`http://localhost:3000/user/1`);
+            const response = await fetch(`http://localhost:3000/users/1`);
     
-            const user = await response.json();
+            const result = await response.json();
 
-            const yourUser = new User(user);
+            console.log(result)
+
+            const yourUser = new User(result.rows[0]);
     
             return yourUser;
     
@@ -46,7 +49,8 @@ const beginGame = {
 
             const result = await response.json();
 
-            const monster = new Monster(result);
+            const monster = new Monster(result.rows[0]);
+
             return monster;
         } catch(e) {
             console.log(e);
@@ -57,11 +61,11 @@ const beginGame = {
 
         try {
             // Récupération des personnages depuis l'API
-            const response = await fetch(`http://localhost:3000/inventory/1`);
+            const response = await fetch(`http://localhost:3000/users/1`);
     
-            const inventory = await response.json();
+            const result = await response.json();
 
-            const yourInventory = new Inventory(inventory);
+            const yourInventory = new Inventory(result.rows[0]);
     
             return yourInventory;
     

@@ -1,5 +1,5 @@
 %syntax-version=1.0.0
 %project=ff_clicker
 
-1.create_tables 2022-12-12T14:55:36Z Etudiant O'clock <student@teleporter> # Création des table
-2.first_seeding_tables 2022-12-12T14:55:36Z Etudiant O'clock <student@teleporter> # Seeding de la BDD
+1.create_tables 2022-12-17T21:24:59Z Etudiant O'clock <student@teleporter> # Création des table
+2.first_seeding_tables 2022-12-17T21:24:59Z Etudiant O'clock <student@teleporter> # Seeding de la BDD

@@ -1,16 +1,20 @@
 require('dotenv').config(); 
 const express = require('express');
-const router = require('./app/router');
+const { personnageBaseRouter, usersRouter, monsterRouter } = require('./app/router');
 const cors = require('cors');
 
 const app = express();
+
+app.use(express.json())
 
 app.use(cors())
 
 app.use(express.urlencoded({extended : true}));
 
 
-app.use(router); 
+app.use('/personnageBase', personnageBaseRouter); 
+app.use('/users', usersRouter);
+app.use('/monster', monsterRouter);
 
 const port = process.env.PORT || 1234;
 

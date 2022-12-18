@@ -4,7 +4,7 @@ INSERT INTO "users" ("id", "username", "email", "password") VALUES
     (1, 'alex', 'alex@something.truc', 'testPassword');
 
 INSERT INTO "personnage_base" ("name", "lvl", "power_click", "cost", "auto_click_cost", "growth_rate", "images", "game_logo_img", "quotes", "episode" ) VALUES
-    ('Cloud Strife', 0, 100, 25, 5000, 1.25, '/assets/images/personnages/ff7/cloud.jpeg', '/assets/images/logogame/logoff7.jpeg', 'Désolé, je ne suis pas intéressé', '7' ),
+    ('Cloud Strife', 0, 10000, 25, 5000, 1.25, '/assets/images/personnages/ff7/cloud.jpeg', '/assets/images/logogame/logoff7.jpeg', 'Désolé, je ne suis pas intéressé', '7' ),
     (E'Y\'shtola', 0, 5, 2500, 40000, 1.53, '/assets/images/personnages/ff14/yshtola.jpeg', '/assets/images/logogame/logoff14.jpeg', E'Je vais vous montrez pourquoi j\'ai choisi le nom de Matoya', '14'),
     ('Balthier', 0, 12, 9000, 100000, 1.39, '/assets/images/personnages/ff12/balthier.jpeg', '/assets/images/logogame/logoff12.jpeg', 'Les pirates retrouvent leurs ailes', '12'),
     ('Edge', 0, 24, 17800, 400500, 1.48, '/assets/images/personnages/ff4/edge.jpeg', '/assets/images/logogame/logoff4.jpeg', 'Vous pensez que notre colère est une faiblesse ? Alors laissez-moi vous montrer... comment vous avez tort !', '4'),
