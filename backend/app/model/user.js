@@ -24,6 +24,26 @@ const model = {
 
         return user;
             
+    },
+
+    async insertUser(user) {
+
+        let userDB;
+        try {
+
+            const sqlQuery = `
+            INSERT INTO users ( username, email, password )
+            VALUES ($1, $2, $3)
+            RETURNING *
+            `;
+            const values = [ user.username, user.email, user.password];
+            const result = await client.query(sqlQuery, values);
+            userDB = result.rows[0];
+        } catch(e) {
+            console.log(e);
+        }
+
+        return userDB;
     }
 }
 

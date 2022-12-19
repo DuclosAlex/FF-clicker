@@ -11,12 +11,12 @@ Cette expérience pourra être dépensé pour acquérir des personnages et obten
 - Base de l'API/Backend posé
 - Base du HTML/CSS posé
 - Initialisation de la partie depuis le début
-- Gestion des Click et Gain d'xp
-- Augmentation du Lvl d'un personnage et diminution du stock d'XP en conséquence
-- Ajout du prochain personnage a acheté quand le dernier personnage de la liste passe au Lvl 1
-- Ajout du personnage mystère quand le dernier personnage non acheté est dévoilé
-- Gestion de l'activation/désactivation des bouttons de Level Up
-- Modifier le backend, passer de Sequelize à un modèle avec Datamapper
+- Gestion des Click et Gain d'xp (18/10/2022)
+- Augmentation du Lvl d'un personnage et diminution du stock d'XP en conséquence (18/10/2022)
+- Ajout du prochain personnage a acheté quand le dernier personnage de la liste passe au Lvl 1 (18/10/2022)
+- Ajout du personnage mystère quand le dernier personnage non acheté est dévoilé (18/10/2022)
+- Gestion de l'activation/désactivation des bouttons de Level Up (18/10/2022)
+- Modifier le backend, passer de Sequelize à un modèle avec Datamapper (17/10/2022)
 - Versionning de la BDD
 - Modification de la BDD pour correspondre au rework du MCD
 - Seeding plus important de la BDD pour poursuivre le développement

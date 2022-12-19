@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/connexion.css">
+    <title>FF-Clicker</title>
+</head>
+<body>
+
+    <header>
+        <h1>Dissidia Final Fantasy Clicker</h1>
+        <span class="border-header"></span>
+        
+    </header>
+
+    <main class="connexion-section">
+
+        <form method="POST" action="">
+
+            <label for="username">Votre nom d'utilisateur</label>
+            <input type="text" id="username" name="username" placeholder="Rentrez votre nom d'utilisateur...">
+
+            <label for="email">Votre email</label>
+            <input type="text" id="email" name="email" placeholder="Rentrez votre email...">
+
+            <label for="password">Votre mot de passe</label>
+            <input type="password" id="password" name="password" placeholder="Rentrez votre mot de passe...">
+
+            <label for="verify_password">Confirmez votre mot de passe</label>
+            <input type="password" id="verify_password" name="verify_password" placeholder="Confirmez votre mot de passe...">
+
+            <button id="registerButton" type="submit">S'enregistrez</button>
+        </form>
+    </main>
+    
+</body>
+
+<script type="module" src="./assets/js/modules/connexion/register.js"></script>
+</html>

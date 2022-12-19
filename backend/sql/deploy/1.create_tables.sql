@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS "users" (
     "username" TEXT NOT NULL UNIQUE, 
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL UNIQUE,
-    "tutorial_status" BOOLEAN,
-    "autoclick_status" BOOLEAN,
+    "tutorial_status" BOOLEAN NOT NULL DEFAULT FALSE,
+    "autoclick_status" BOOLEAN NOT NULL DEFAULT FALSE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP, -- on peut également utiliser NOW()
     "updated_at" TIMESTAMPTZ
 );
