@@ -5,7 +5,6 @@ const controller = {
     async getOneUser (req, res) {
 
         const user = await usersModel.getOneUser(req.params.id);
-        console.log(user)
         res.json(user);
 
     },

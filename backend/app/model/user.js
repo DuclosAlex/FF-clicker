@@ -28,8 +28,7 @@ const model = {
 
     async insertUser(user) {
 
-        let fullUser = [];
-
+        let userDB;
         try {
 
             const sqlQuery = `
@@ -39,25 +38,12 @@ const model = {
             `;
             const values = [ user.username, user.email, user.password];
             const result = await client.query(sqlQuery, values);
-            fullUser.push(result.rows[0]);
-            let userDB = result.rows[0];
-            console.log(fullUser);
-
-            const inventorySqlQuery = `
-            INSERT INTO inventory ( users_id, gils )
-            VALUES ($1, $2)
-            RETURNING *
-            `
-            const inventoryValues = [userDB.id, 0];
-            const inventoryResult = await client.query(inventorySqlQuery, inventoryValues);
-            fullUser.push(inventoryResult.rows[0]);
-            console.log(fullUser);
-
+            userDB = result.rows[0];
         } catch(e) {
             console.log(e);
         }
 
-        return fullUser;
+        return userDB;
     }
 }
 
