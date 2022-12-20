@@ -51,6 +51,7 @@ const model = {
             const inventoryValues = [userDB.id, 0];
             const inventoryResult = await client.query(inventorySqlQuery, inventoryValues);
             fullUser.push(inventoryResult.rows[0]);
+            console.log(fullUser);
 
         } catch(e) {
             console.log(e);
