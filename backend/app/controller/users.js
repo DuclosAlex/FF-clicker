@@ -13,7 +13,11 @@ const controller = {
 
         const user = req.body;
 
+        console.log(user);
+
         const userDB = await usersModel.insertUser(user);
+
+        console.log(userDB)
 
         res.json(userDB);
     }

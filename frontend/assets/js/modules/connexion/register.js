@@ -1,5 +1,4 @@
 
-
 const registerModule = {
 
     addSubmitEvent () {
@@ -10,13 +9,33 @@ const registerModule = {
         
     },
 
-    handleAddUserForm(event) {
+    async handleAddUserForm(event) {
 
         event.preventDefault();
 
         const formElem = event.target;
 
         const formDataObject = new FormData(formElem);
+
+        console.log(...formDataObject);
+
+        try {
+
+            const response = await fetch(`http://localhost:3000/users/register`, {
+                method : 'POST',
+                body : formDataObject
+
+            });
+
+            if(!response.ok) throw new Error(response);
+
+            console.log("l'Utilisateur à été crée")
+            const createdUser = await response.json();
+            console.log(createdUser);
+
+        } catch(e) {
+            console.log(e);
+        }
 
     }
 
